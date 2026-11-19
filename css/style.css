@@ -1,0 +1,137 @@
+:root {
+  color-scheme: light;
+  --page: #f6f7f2; --card: #fffefa; --text: #20362e; --muted: #56695f;
+  --line: #d8dfd6; --accent: #265c49; --on-accent: #fff; --soft: #e9f0e4;
+  --well: #f6f8f2; --warm: #fbe9c6; --cold: #e4edf3; --error: #9a392a;
+  --headline: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font: 100%/1.5 "DM Sans", "Segoe UI", Arial, sans-serif;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark; --page: #14211c; --card: #1c2c25; --text: #f0f4e9;
+  --muted: #b4c6b9; --line: #3e5146; --accent: #b6d8aa; --on-accent: #183529;
+  --soft: #30483b; --well: #22352b; --warm: #4f412a; --cold: #2f414b; --error: #ffad9e;
+}
+* {box-sizing: border-box}
+body {margin: 0; background: var(--page); color: var(--text)}
+button,input {font: inherit}
+button,a,input {touch-action: manipulation}
+button {cursor: pointer}
+button:disabled {opacity: .45; cursor: default}
+button,a { -webkit-tap-highlight-color: transparent }
+button:focus-visible,a:focus-visible,input:focus-visible {outline: 3px solid #b58238; outline-offset: 3px}
+button {display: inline-flex; align-items: center; justify-content: center; gap: .45rem; border: 1px solid transparent; border-radius: 10px; min-height: 42px; padding: 0 .85rem; font-size: .9rem; font-weight: 600; line-height: 1.2}
+button:not(:disabled):hover {filter: brightness(.94)}
+button:active:not(:disabled) {transform: translateY(1px)}
+[data-icon] {display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0}
+svg {width: 19px; height: 19px; display: block}
+.topbar {border-bottom: 1px solid var(--line); background: var(--card)}
+.bar-inner,main {width: min(1152px, calc(100% - 64px)); margin: auto}
+.bar-inner {min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 12px}
+.brand,.tools,.section-title,.card-top,.clock-line,.timer-controls,.dialog-head,.dialog-actions,footer {display: flex; align-items: center}
+.brand {gap: 10px}
+.brand b,.footer-brand {font: 600 2rem/1 var(--headline); letter-spacing: -.05em}
+.brand-mark {display: grid; place-items: center; background: var(--accent); color: var(--on-accent); width: 33px; height: 33px; border-radius: 10px; font-size: 1.75rem; line-height: 1}
+.brand-desc {border-left: 1px solid var(--line); margin-left: 5px; padding-left: 15px; font-size: .9rem; color: var(--muted)}
+.tools,.timer-controls,.dialog-actions {gap: 8px}
+.icon-btn,.quiet {border-color: var(--line); background: var(--card); color: var(--text)}
+.icon-btn,.reset {width: 42px; padding: 0}
+.primary {color: var(--on-accent); background: var(--accent)}
+main {padding: 25px 0 20px}
+.greeting {position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; min-height: 207px; padding: 29px 40px; border-radius: 19px; background: #e7ebd7; color: #203d31; border: 1px solid #d0d9c5}
+.landscape {position: absolute; z-index: -1; inset: 0 0 0 38%; background: url(../assets/perbukitan.webp) center 57% / cover no-repeat; mask-image: linear-gradient(90deg, transparent, #000 28%); -webkit-mask-image: linear-gradient(90deg,transparent,#000 28%)}
+.hero-content {max-width: 65%}
+.eyebrow {margin: 0; font-weight: 650; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase}
+.date {display: flex; align-items: center; gap: 9px}
+.date svg {width: 16px; height: 16px}
+h1,h2,p {margin: 0}
+h1 {font: 500 clamp(2.5rem,4.7vw,4rem)/1.1 var(--headline); letter-spacing: -.055em; margin: 10px 0 14px; overflow-wrap: anywhere}
+.clock-line {gap: 12px}
+#clock {font: 500 1.35rem/1.2 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: -.03em}
+.clock-line span {font-size: .85rem; border-left: 1px solid #adbba4; padding-left: 12px}
+.work-grid {display: grid; grid-template-columns: minmax(0,1.48fr) minmax(0,1fr); gap: 18px; align-items: start; margin: 18px 0}
+.card {background: var(--card); border: 1px solid var(--line); border-radius: 17px; padding: 22px 24px}
+.card-top,.dialog-head,footer {justify-content: space-between; gap: 8px}
+.section-title {gap: 11px}
+h2 {font: 500 1.72rem/1.15 var(--headline); letter-spacing: -.045em}
+.tile {width: 35px; height: 35px; border-radius: 10px; color: var(--accent); background: var(--soft)}
+.tile.amber {background: var(--warm); color: #946016}
+.tile.blue {background: var(--cold); color: #416b80}
+[data-theme=dark] .tile.amber {color:#f3c67f}
+[data-theme=dark] .tile.blue {color:#accedd}
+.counter,.duration {font-size: .81rem; color: var(--muted); font-variant-numeric: tabular-nums}
+.counter {padding: 3px 9px; border-radius: 20px; background: var(--soft)}
+.task-entry {display: flex; gap: 8px; margin: 20px 0 12px}
+input {width: 100%; min-width: 0; min-height: 44px; color: var(--text); background: var(--well); border: 1px solid var(--line); border-radius: 10px; padding: .55rem .8rem}
+input::placeholder {color: var(--muted); opacity: 1}
+.task-entry .primary {padding-inline: 16px}
+.task-card {min-height: 297px}
+.empty {display: grid; justify-items: center; align-content: center; gap: 2px; min-height: 153px; text-align: center}
+.empty-icon {color: var(--accent); width: 51px; height: 53px; margin: 0 0 4px; background: var(--soft); border-radius: 40% 55% 42% 50%; transform: rotate(-5deg)}
+.empty-icon svg {width: 29px; height: 29px}
+.empty p,#no-links {font-size: .9rem; color: var(--muted)}
+ul {padding: 0; list-style: none; margin: 0}
+.task-row {display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--line); padding: 7px 0}
+.task-row label {display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; overflow-wrap: anywhere; cursor: pointer}
+.task-row input {appearance: auto; width: 18px; height: 18px; min-height: 0; flex: 0 0 auto; accent-color: var(--accent); margin: 0 1px}
+.task-row input:checked + span {text-decoration: line-through; color: var(--muted)}
+.action {background: transparent; color: var(--muted); min-height: 34px; width: 34px; padding: 0}
+.action:hover {background: var(--well)}
+.action svg {width: 16px}
+.dial {--elapsed: 0deg; border-radius: 50%; width: 155px; aspect-ratio: 1; margin: 11px auto 12px; position: relative; display: grid; place-items: center; background: conic-gradient(var(--line) var(--elapsed),var(--accent) 0deg)}
+.ticks {position: absolute; inset: 4px; border-radius: 50%; background: repeating-conic-gradient(var(--line) 0deg 1deg, var(--card) 1deg 6deg); border: 6px solid var(--card)}
+.dial-face {position: relative; display: grid; align-content: center; justify-items: center; width: 78%; height: 78%; border-radius: 50%; background: var(--card)}
+#remaining {font: 500 2.45rem/1.15 var(--headline); letter-spacing: -.045em; font-variant-numeric: tabular-nums}
+#timer-status {font-size: .78rem; color: var(--muted)}
+.timer-controls {justify-content: center}
+.timer-controls button {min-height: 39px}
+.timer-controls .primary {min-width: 104px}
+.links-card .card-top {margin-bottom: 15px}
+.text-btn {background: transparent; color: var(--accent); padding-right: 0}
+.links {display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px}
+.links li {display: flex; align-items: center; border: 1px solid var(--line); background: var(--well); border-radius: 12px; padding: 4px 6px 4px 11px; min-width: 0}
+.links a {display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; padding: 8px 0; color: var(--text); text-decoration: none; font-size: .94rem; font-weight: 600}
+.links a:hover .link-name {text-decoration: underline}
+.link-name {overflow-wrap: anywhere}
+.link-mark {display: grid; place-items: center; width: 30px; height: 30px; flex: 0 0 auto; border-radius: 8px; background: var(--soft); color: var(--accent); font-size: 1.1rem}
+.links li:nth-child(3n+2) .link-mark {background: var(--cold); color: var(--text)}
+.links li:nth-child(3n) .link-mark {background: var(--warm); color: var(--text)}
+footer {padding: 18px 4px 0; color: var(--muted); font-size: .8rem}
+.footer-brand {font-size: 1.2rem}
+#storage-note {display: flex; align-items: center; gap: 7px}
+#storage-note svg {width: 15px}
+dialog {max-width: min(400px,calc(100% - 32px)); width: 100%; border: 1px solid var(--line); border-radius: 17px; padding: 22px; background: var(--card); color: var(--text); box-shadow: 0 18px 60px #10281e33}
+dialog::backdrop {background: #10251d70}
+.dialog-head {margin-bottom: 14px}
+dialog label {display: block; margin: 12px 0 5px; font-size: .9rem; font-weight: 600}
+.dialog-actions {justify-content: flex-end; margin-top: 20px}
+.error:not(:empty) {margin: 9px 0; color: var(--error); font-size: .9rem}
+.sr {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0}
+[hidden] {display: none !important}
+@media(max-width: 780px) {
+  .bar-inner,main {width: calc(100% - 32px)}
+  .work-grid {grid-template-columns: 1fr}
+  .task-card {min-height: auto}
+  .links {grid-template-columns: repeat(2,minmax(0,1fr))}
+  .hero-content {max-width: 80%}
+}
+@media(max-width: 540px) {
+  .bar-inner {min-height: 62px}
+  .brand-desc {display: none}
+  .tools .quiet {font-size: .81rem}
+  main {padding-top: 15px}
+  .greeting {min-height: 203px; padding: 24px 20px 42px; align-items: flex-start}
+  .landscape {inset: 0; background-position: 64% 60%; mask-image: linear-gradient(150deg, transparent 34%, #000 90%); -webkit-mask-image: linear-gradient(150deg, transparent 34%, #000 90%)}
+  .hero-content {max-width: 100%}
+  h1 {font-size: 2.65rem}
+  .date {font-size: .7rem; letter-spacing: .08em}
+  .work-grid {margin: 12px 0; gap: 12px}
+  .card {padding: 16px}
+  h2 {font-size: 1.5rem}
+  .task-entry {flex-wrap: wrap}
+  .task-entry input {flex: 1 1 130px}
+  .task-entry .primary {padding-inline: 10px}
+  .links {grid-template-columns: 1fr}
+  .section-title {gap: 8px}
+  .text-btn {font-size: .83rem}
+  .empty {min-height: 130px}
+}

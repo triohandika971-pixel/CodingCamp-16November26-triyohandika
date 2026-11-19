@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#245746">
+  <meta name="description" content="Sela, dashboard harian untuk mencatat tugas, menjaga fokus, dan membuka tautan favorit.">
+  <title>Sela — Dashboard harian</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="bar-inner">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">✳</span><b>Sela</b><span class="brand-desc">Dashboard harian</span></div>
+      <div class="tools">
+        <button id="theme" class="icon-btn" type="button" aria-label="Aktifkan mode gelap" title="Aktifkan mode gelap"><span data-icon="moon"></span></button>
+        <button id="personalize" class="quiet"><span data-icon="user"></span><span>Nama sapaan</span></button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="greeting" aria-labelledby="greeting-title">
+      <div class="landscape" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow date"><span data-icon="calendar"></span><time id="date"></time></p>
+        <h1 id="greeting-title">Selamat datang.</h1>
+        <div class="clock-line"><time id="clock">--:--:--</time><span>Waktu lokal</span></div>
+      </div>
+    </section>
+    <div class="work-grid">
+      <section class="card task-card" aria-labelledby="tasks-title">
+        <div class="card-top"><div class="section-title"><span class="tile" data-icon="list"></span><h2 id="tasks-title">Daftar tugas</h2></div><span id="task-count" class="counter">0 / 0 selesai</span></div>
+        <form id="task-form" class="task-entry"><label class="sr" for="task-text">Nama tugas baru</label><input id="task-text" maxlength="180" placeholder="Apa yang ingin kamu kerjakan?" required autocomplete="off"><button class="primary" type="submit"><span data-icon="plus"></span>Tambah</button></form>
+        <p class="error" id="task-error" role="alert"></p>
+        <ul id="tasks" class="task-list"></ul>
+        <div id="empty" class="empty"><span data-icon="notebook" class="empty-icon"></span><strong>Belum ada tugas</strong><p>Tulis tugas pertamamu di kolom atas.</p></div>
+      </section>
+      <section class="card focus-card" aria-labelledby="focus-title">
+        <div class="card-top"><div class="section-title"><span class="tile amber" data-icon="timer"></span><h2 id="focus-title">Timer fokus</h2></div><span class="duration">25 menit</span></div>
+        <div class="dial" id="dial"><div class="ticks"></div><div class="dial-face"><span id="remaining" role="timer" aria-label="Waktu fokus tersisa">25:00</span><span id="timer-status" aria-live="polite">Siap mulai</span></div></div>
+        <div class="timer-controls"><button id="start" class="primary"><span data-icon="play"></span>Mulai</button><button id="stop" class="quiet" disabled><span data-icon="pause"></span>Jeda</button><button id="reset" class="quiet reset" aria-label="Reset timer" title="Reset timer"><span data-icon="reset"></span></button></div>
+      </section>
+    </div>
+    <section class="card links-card" aria-labelledby="links-title">
+      <div class="card-top"><div class="section-title"><span class="tile blue" data-icon="link"></span><h2 id="links-title">Tautan cepat</h2></div><button id="add-link" class="text-btn"><span data-icon="plus"></span>Tambah tautan</button></div>
+      <ul id="links" class="links"></ul><p id="no-links" hidden>Simpan situs yang sering kamu buka melalui tombol Tambah tautan.</p>
+    </section>
+    <footer><span class="footer-brand">✳ Sela</span><span id="storage-note"><span data-icon="device"></span>Data tersimpan di browser ini</span></footer>
+  </main>
+  <dialog id="editor" aria-labelledby="editor-title">
+    <form id="editor-form">
+      <div class="dialog-head"><h2 id="editor-title"></h2><button id="close" type="button" class="icon-btn" aria-label="Tutup"><span data-icon="x"></span></button></div>
+      <label id="field-caption" for="field"></label><input id="field" autocomplete="off">
+      <div id="url-group" hidden><label for="url">Alamat situs</label><input id="url" inputmode="url" placeholder="https://contoh.com" maxlength="2048"></div>
+      <p id="editor-error" class="error" role="alert"></p>
+      <div class="dialog-actions"><button type="button" id="cancel" class="quiet">Batal</button><button class="primary" type="submit">Simpan</button></div>
+    </form>
+  </dialog>
+  <p id="notice" class="sr" role="status"></p>
+</body>
+</html>
